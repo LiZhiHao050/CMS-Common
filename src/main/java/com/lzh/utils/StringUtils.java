@@ -4,6 +4,12 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author LZH
+ * @Date 2019年10月12日
+ * 字符串工具类
+ */
+
 public class StringUtils {
 
 	// 定义字符数组
@@ -128,5 +134,21 @@ public class StringUtils {
 		boolean isMatch = m.matches();
 		return isMatch;
 	}
-
+	
+	/**
+	 * 字符串转HTML
+	 * @param src
+	 * @return
+	 * Windows 系统换行符是 “\r\n”,Linux 系统是 “\n”，因此要将 \n\r 替换成一个 \n
+	 * 再将 \n 结尾的这行文本用 <p></p > 标签包起来
+	 * 如果遇到单个 \r 字符要使用 <br/> 标签替换
+	 */
+	public static String toHtml(String src) {
+		String dst = src.replaceAll("\r\n", "\n");
+		dst = dst.replaceAll("\n", "</p><p>");
+		dst = "<p>" + dst + "</p>";
+		dst = dst.replaceAll("\r", "<br/>");
+		return dst;
+	}
+	
 }
