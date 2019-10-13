@@ -17,7 +17,7 @@ public class DateUtils {
 	 * @param birthday
 	 * @return
 	 */
-	public static int calAge(Date birthday) {
+	public static int getAge(Date birthday) {
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(birthday);
