@@ -28,7 +28,7 @@ public class StringUtils {
 	}
 
 	/**
-	 * 判断源字符串是否为空，空引号也算没值；
+	 * 判断源字符串是否为空，空引号也算没值
 	 * 
 	 * @param str
 	 * @return
@@ -38,7 +38,7 @@ public class StringUtils {
 	}
 
 	/**
-	 * 判断源字符串是否有值，空引号也算没值；
+	 * 判断源字符串是否有值，空引号也算没值
 	 * 
 	 * @param str
 	 * @return
@@ -104,7 +104,7 @@ public class StringUtils {
 	 * @return
 	 */
 	public static boolean isNumber(String str) {
-		String reg = "[0-9]+";
+		String reg = "[0-9]+\\.?[0-9]*";
 		return str.matches(reg);
 	}
 
