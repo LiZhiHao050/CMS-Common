@@ -1,5 +1,7 @@
 package com.lzh.utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -149,6 +151,65 @@ public class StringUtils {
 		dst = "<p>" + dst + "</p>";
 		dst = dst.replaceAll("\r", "<br/>");
 		return dst;
+	}
+	
+	
+	/**
+	 * 统计字符个数
+	 * @param text          要统计的文本
+	 * @param diffCase      是否转换大小写
+	 * @return
+	 */
+	public static Map<Character, Integer> countChars(String text, boolean diffCase) {
+		Map<Character, Integer> hashMap = new HashMap<>();
+		
+		// 判断是否区分大小写
+		if (!diffCase) {
+			text = text.toLowerCase();           // 将其转换为小写
+		}
+		
+		text = text.replace("\r\n", " ");        // 去掉换行
+		char[] charArray = text.toCharArray();   // 转换程char数组
+		
+		for (char c : charArray) {
+			if (hashMap.containsKey(c)) {        // 判断集合内是否存在该键(存在)
+				Integer num = hashMap.get(c);    // 获取值
+				hashMap.put(c, num + 1);         // 值自增
+			} else {                                
+				hashMap.put(c, 1);               // 否则新建
+			}
+		}
+		
+		return hashMap;
+	}
+	
+	/**
+	 * 统计单词个数
+	 * @param text       要统计的文本
+	 * @param diffCase   是否区分大小写
+	 * @return
+	 */
+	public static Map<String, Integer> countLetter(String text, boolean diffCase) {
+		Map<String, Integer> hashMap = new HashMap<>();
+		
+		// 判断是否区分大小写
+		if (!diffCase) {
+			text = text.toLowerCase();           // 将其转换为小写
+		}
+		
+		text = text.replace("\r\n", " ");        // 去掉换行
+		String[] letterArr = text.split("\\W");  // 通过正则根据非字母切割字符串
+		
+		for (String str : letterArr) {
+			if (hashMap.containsKey(str)) {      // 判断集合内是否存在该键(存在)
+				Integer num = hashMap.get(str);  // 获取值
+				hashMap.put(str, num + 1);       // 值自增
+			} else {
+				hashMap.put(str, 1);             // 否则新建
+			}
+		}
+		
+		return hashMap;
 	}
 	
 }
