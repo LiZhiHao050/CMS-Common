@@ -1,5 +1,6 @@
 package com.lzh.utils;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -211,5 +212,17 @@ public class StringUtils {
 		
 		return hashMap;
 	}
+	
+	/**
+	 * 计算百分比工具类
+	 * @param num
+	 * @param total
+	 * @return
+	 */
+	public static String percent(int num, int total) {
+		String res = new DecimalFormat("0").format((double)num / total * 100);   // 保留0位小数
+		return res;
+	}
+	
 	
 }
