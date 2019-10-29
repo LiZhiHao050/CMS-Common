@@ -1,4 +1,4 @@
-package com.lzh.utils;
+package com.lizhihao.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.lzh.utils;
+package com.lizhihao.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

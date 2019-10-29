@@ -1,4 +1,4 @@
-package com.lzh.utils;
+package com.lizhihao.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
