@@ -142,5 +142,22 @@ public class FileUtils {
 		return strList;
 	} 
 
+	
+	/**
+	 * 	获取文件夹下的文件列表
+	 * @param pathName          具体路径
+	 * @return
+	 */
+	public static List<String> getFileList(String pathName) {
+		String[] list = new File(pathName).list();
+		List<String> fileList = new ArrayList<String>();
+		for (String string : list) {
+			File subFile = new File(pathName + "\\" + string);
+			if (subFile != null && subFile.exists() && subFile.isFile())
+				fileList.add(pathName + "\\" + string);
+		}
+		return fileList;
+	}
+	
 }
 
