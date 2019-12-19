@@ -159,5 +159,17 @@ public class FileUtils {
 		return fileList;
 	}
 	
+	/**
+	 * 	返回该文件的扩展名称
+	 * @param fileName
+	 * @return
+	 */
+	public static String getExtendName(String fileName) {
+		
+		String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+		
+		return suffix;
+	}
+	
 }
 
