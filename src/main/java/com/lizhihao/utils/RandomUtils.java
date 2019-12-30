@@ -1,5 +1,6 @@
 package com.lizhihao.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,7 +59,7 @@ public class RandomUtils {
 	public static String randomString(int length) {
 		String str="";
 		for(int i =0;i<length; i++) {
-			str+=randomCharacter();
+			str += randomCharacter();
 		}
 		
 		return str;
@@ -93,8 +94,62 @@ public class RandomUtils {
 	public static String random13Phone() {
 		long i = (long)(Math.ceil((Math.random()*(999999999-100000000.0) + 1)+100000000));
 		String phone = i+"";
-		return "13"+i;
+		return "13" + i;
 	}
+	
+	/**
+	 * 生成随机汉字
+	 * @param num	数量
+	 * @return
+	 * @throws UnsupportedEncodingException 
+	 */
+	public static String randomChinese(int num) throws UnsupportedEncodingException {
+		String str = "";
+		Random random = new Random();
+		
+		for (int i = 0; i < num; i++) {
+			int hightPos, lowPos; // 定义高低位
+			hightPos = (176 + Math.abs(random.nextInt(39)));//获取高位值
+			lowPos = (161 + Math.abs(random.nextInt(93)));//获取低位值
+			
+			byte[] b = new byte[2];
+			b[0] = (new Integer(hightPos).byteValue());
+			b[1] = (new Integer(lowPos).byteValue());
+			
+			str += new String(b, "GBk");//转成中文
+		}
 
+		return str;
+	}
+	
+	
+	/**
+	 * 生成随机邮箱
+	 * @param min	最小长度
+	 * @param max	最大长度
+	 * @return
+	 */
+	public static String randomEmail(int min, int max) {
+		String prefix = "";
+
+		String[] suffix = {"@qq.com", "@163.com", "@sian.com", "@gmail.com",
+				"@sohu.com", "@hotmail.com", "@foxmail.com"};
+		String str = "";
+		
+		int random = RandomUtils.random(min, max);
+		
+		for (int i = 0; i < max; i++) {
+			if (i == random) {
+				break;
+			}
+			str += randomCharacter();
+		}
+		
+		int suffixStr = RandomUtils.random(0, suffix.length - 1);
+		str += suffix[suffixStr];
+				
+		return str;
+	}
+	
 }
 
